@@ -1,6 +1,7 @@
 package com.ofss.main.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.ofss.main.domain.Account;
 import com.ofss.main.domain.Customer;
 import com.ofss.main.repository.CustomerRepository;
 
@@ -55,8 +57,18 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 			}
 		}
-
-		return null;
+		else {
+			Customer customer2 = new Customer();
+			customer2.setUsername("Invalid Username");
+			System.out.println(customer2);
+			return customer2;
+		}
 	}
+
+
+
+
+
+
 
 }

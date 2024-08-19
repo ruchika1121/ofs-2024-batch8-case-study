@@ -1,0 +1,44 @@
+<!--
+ Copyright (c) 2014, 2024, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Register</h1>
+
+  <oj-c-form-layout id="formLayoutOptions" max-columns="6" direction="row" columns="3" full-width="true">
+
+    <oj-c-input-text id="text-input" value="{{fname}}" label-hint="Enter first name"
+      label-edge="inside"></oj-c-input-text>
+
+    <oj-c-input-text id="text-input" value="{{lname}}" label-hint="Enter last name"
+      label-edge="inside"></oj-c-input-text>
+
+    <oj-c-input-text id="text-input" value="{{username}}" label-hint="Enter user name"
+      label-edge="inside"></oj-c-input-text>
+
+    <oj-c-input-text id="text-input" value="{{address}}" label-hint="Enter address"
+      label-edge="inside"></oj-c-input-text>
+
+    <oj-c-input-text id="text-input" value="{{city}}" label-hint="Enter city" label-edge="inside"></oj-c-input-text>
+
+    <oj-c-input-text id="text-input" value="{{state}}" label-hint="Enter state" label-edge="inside"></oj-c-input-text>
+
+    <oj-c-input-number id="text-input" value="{{pincode}}" label-hint="Enter pincode" label-edge="inside">
+    </oj-c-input-number>
+
+    <oj-c-input-number id="text-input" value="{{phone}}" label-hint="Enter phone" label-edge="inside">
+    </oj-c-input-number>
+
+    <oj-c-input-password 
+    clear-icon="always" 
+    label-hint="Enter your password" 
+    value="{{password}}"></oj-c-input-password>
+
+    <oj-c-input-text id="text-input" value="{{email}}" label-hint="Enter email" label-edge="inside"></oj-c-input-text>
+  </oj-c-form-layout>
+  <oj-c-button  
+  id="dis_button1" 
+  on-oj-action="[[addCustomer]]" 
+  chroming="callToAction"  label="Add"></oj-c-button>
+</div>

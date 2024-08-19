@@ -2,24 +2,44 @@ package com.ofss.main.domain;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+@Entity
+@Table(name="account")
 public class Account {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="account_id")
 	private int account_id;
 
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customer_id")
 	private Customer customer;
 
+	@Column(name="opening_date")
 	private Date opening_date;
-
+	
+	@Column(name="minimum_balance")
 	private double minimum_balance;
+	
+	@Column(name="current_balance")
 	private double current_balance;
+	
+	@Column(name="roi")
 	private double roi;
+	
+	@Column(name="account_type")
 	private String account_type;
 
 	public Account(Customer customer, double minimum_balance, double current_balance, double roi, String account_type) {
@@ -39,7 +59,8 @@ public class Account {
 		this.roi = roi;
 		this.account_type = account_type;
 	}
-
+	
+	public Account() {}
 	public int getAccount_id() {
 		return account_id;
 	}

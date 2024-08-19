@@ -1,10 +1,17 @@
 package com.ofss.main.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,7 +21,7 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
-	private int customer_id;
+	private int customerId;
 
 	@Column(name = "first_name")
 	private String first_name;
@@ -58,6 +65,10 @@ public class Customer {
 	@Column(name = "int_of_attempts")
 	private int no_of_attempts;
 
+	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Account> allAccounts;
+	
 	public Customer(String first_name, String last_name, String username, String address_1, String address_2,
 			String address_3, String city, String state, int pin_code, long phone_number, String password,
 			String email) {
@@ -80,15 +91,15 @@ public class Customer {
 	}
 
 	public Customer(int customer_id) {
-		this.customer_id = customer_id;
+		this.customerId = customer_id;
 	}
 
 	public int getCustomer_id() {
-		return customer_id;
+		return customerId;
 	}
 
 	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+		this.customerId = customer_id;
 	}
 
 	public String getFirst_name() {
@@ -202,10 +213,19 @@ public class Customer {
 	public void setNo_of_attempts(int no_of_attempts) {
 		this.no_of_attempts = no_of_attempts;
 	}
+	
+
+	public List<Account> getAllAccounts() {
+		return allAccounts;
+	}
+
+	public void setAllAccounts(List<Account> allAccounts) {
+		this.allAccounts = allAccounts;
+	}
 
 	@Override
 	public String toString() {
-		return "Customer [customer_id=" + customer_id + ", first_name=" + first_name + ", last_name=" + last_name
+		return "Customer [customer_id=" + customerId + ", first_name=" + first_name + ", last_name=" + last_name
 				+ ", username=" + username + ", address_1=" + address_1 + ", address_2=" + address_2 + ", address_3="
 				+ address_3 + ", city=" + city + ", state=" + state + ", pin_code=" + pin_code + ", phone_number="
 				+ phone_number + ", password=" + password + ", email=" + email + "]";
